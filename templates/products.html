@@ -1,0 +1,26 @@
+{% extends "main.html" %} {% block title %} Products {% endblock %}
+{% block content %}
+<h3 class="text-left">Products Table</h3>
+<!-- table -->
+<table class="table table-striped" style="width: 100%" id="my_table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Products Name</th>
+      <th scope="col">UOM ID</th>
+      <th scope="col">Price Per Unit</th>
+    </tr>
+  </thead>
+  <tbody id="products_table">
+    {% for product in products %}
+    <tr>
+      <td>{{ product.product_id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.uom_id }}</td>
+      <td>{{ product.price_per_unit }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

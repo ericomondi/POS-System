@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> GSMS </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
+     <!-- BOOTSTRAP styles -->
+   <link
+   rel="stylesheet"
+   href="{{ url_for('static', filename='/css/bootstrap.css') }}"
+ />
+    <link
+    rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='/css/add-sale/bootstrap.min.css') }}"
+  />
+    <link
+      rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='/css/add-sale/style.css') }}"
+    />
+    <link type="text/css"
+    rel="stylesheet"
+    href="{{ url_for('static', filename='/css/add-sale/custom.css') }}"
+  />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Hide the form initially */
+      #editForm, #addForm, #deleteForm {
+        display: none;
+        
+      }
+    </style>
+</head>
+<body class="tooltips" style="padding-bottom: 200px;">
+<div class="container">
+
+    <div class="header content rows-content-header">
+        <button class="button-menu-mobile show-sidebar">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="nav navbar-nav top-left-icons">
+            <li class="breadcrumb">
+                <a href="/home">
+                    <i class="fa-solid fa-house" title="Home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/dashboard">
+                    <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Dashboard"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/products">
+                    <i class="zmdi zmdi-assignment zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Products"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/sales">
+                    <i class="fa-solid fa-scale-balanced" title="Sales"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <h3 class="text-left">Products Table</h3>
+    <!-- table -->
+    <table class="table table-striped" style="width: 100%" id="my_table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Products Name</th>
+          <th scope="col">UOM ID</th>
+          <th scope="col">Price Per Unit </th>
+        </tr>
+      </thead>
+      <tbody id="products_table">
+        {% for product in products %}
+        <tr>
+          <td>{{ product.product_id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.uom_id }}</td>
+          <td>{{ product.price_per_unit }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button id="addProduct">Add Product</button>
+    <button id="editProduct">Edit Product</button>
+    <button id="deleteProduct">Delete Product</button>
+
+
+
+
+<!-- edit product -->
+<form id="editForm" method="POST" action="edit-product">
+  <h2>Edit Product</h2>
+  <label for="p_id">Product Name:</label>
+  <select id="p_id" name="p_id">
+    {% for product in products %}
+      <option value="{{ product.product_id }}">{{ product.name }}</option>
+    {% endfor %}
+  </select><br><br>
+  <label for="n_name">New Name:</label>
+  <input type="text" id="n_name" name="n_name"><br><br>
+  <label for="uom">Unit of Measure:</label>
+  <select id="uom" name="n_uom">
+    {% for uom in uoms %}
+      <option value="{{ uom.uom_id }}">{{ uom.uom_name }}</option>
+    {% endfor %}
+  </select><br><br>
+  <label for="n_price">New Price:</label>
+  <input type="number" id="n_price" name="n_price"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+
+</div>
+
+
+
+
+<!-- Form that becomes visible when the button is clicked -->
+<form id="addForm" method="POST" action="/add-product">
+  <h2>Add Product</h2>
+  <label for="p_name">Product Name:</label>
+  <input type="text" id="p_name" name="p_name"><br><br>
+  <label for="uom">Unit of Measure:</label>
+  <select id="uom" name="uom">
+    {% for uom in uoms %}
+      <option value="{{ uom.uom_id }}">{{ uom.uom_name }}</option>
+    {% endfor %}
+  </select><br><br>
+  <label for="price">Price Per Unit:</label>
+  <input type="number" id="price" name="price"><br><br>
+  <input type="submit" value="Submit">
+</form>
+    
+
+<!-- Form that becomes visible when the button is clicked -->
+<form id="deleteForm" method="POST" action="/delete-product">
+  <h2>Delete Product</h2>
+ 
+  <label for="p_id">Product Name:</label>
+  <select id="p_id" name="p_id">
+    {% for product in products %}
+      <option value="{{ product.product_id }}">{{ product.name }}</option>
+    {% endfor %}
+  </select><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+
+
+
+
+</body>
+<script>
+  // JavaScript to show the form when the button is clicked
+  document.getElementById("addProduct").addEventListener("click", function() {
+    var form = document.getElementById("addForm");
+    if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  });
+  document.getElementById("editProduct").addEventListener("click", function() {
+    var form = document.getElementById("editForm");
+    if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  });
+  document.getElementById("deleteProduct").addEventListener("click", function() {
+    var form = document.getElementById("deleteForm");
+    if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  });
+</script>
+<script src="{{ url_for('static', filename='js/add-sale/common.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add-sale/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add-sale/order.js') }}"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

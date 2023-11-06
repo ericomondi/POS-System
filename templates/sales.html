@@ -1,0 +1,39 @@
+
+
+{% extends "main.html" %}
+
+{% block title %}
+    Sales
+{% endblock %}
+
+{% block content %}
+<h3 class="text-left">Sales Table</h3>
+
+<!-- table -->
+<table class="table table-striped" style="width: 100%" id="my_table">
+  <thead>
+    <tr>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Total Cost</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody id="products_table">
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.customer_name }}</td>
+      <td>{{ order.total }}</td>
+      <td>{{ order.datetime }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a
+  href="{{ url_for('add_sale') }}"
+  class="btn btn-primary"
+  style="background-color: green; border: green"
+  >Add New Sale</a
+>
+
+
+{% endblock %}

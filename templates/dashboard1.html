@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> GSMS </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
+    <link
+    rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='/css/add-sale/bootstrap.min.css') }}"
+  />
+    <link
+      rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='/css/add-sale/style.css') }}"
+    />
+    <link type="text/css"
+    rel="stylesheet"
+    href="{{ url_for('static', filename='/css/add-sale/custom.css') }}"
+  />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body class="tooltips">
+<div class="container">
+
+    <div class="header content rows-content-header">
+        <button class="button-menu-mobile show-sidebar">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="nav navbar-nav top-left-icons">
+            <li class="breadcrumb">
+                <a href="/home">
+                    <i class="fa-solid fa-house" title="Home"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/dashboard">
+                    <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Dashboard"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/products">
+                    <i class="zmdi zmdi-assignment zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Products"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/sales">
+                    <i class="fa-solid fa-scale-balanced" title="Sales"></i>
+                </a>
+            </li>
+            <li class="breadcrumb">
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket" title="Logout"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+   
+
+
+
+
+
+
+
+<h1 style="margin-top: 50px;">Dashboard</h1>
+</body>
+<script src="{{ url_for('static', filename='js/add-sale/common.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add-sale/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add-sale/order.js') }}"></script>
+</html>
+
+

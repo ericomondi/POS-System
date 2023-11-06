@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GSMS</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="csrf-token"
+      content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700"
+    />
+    <!-- BOOTSTRAP styles -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/bootstrap.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/css/add-sale/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/css/add-sale/style.css') }}"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/add-sale/custom.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="tooltips">
+    <div class="container">
+      <div class="header content rows-content-header">
+        <button class="button-menu-mobile show-sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav visible-lg visible-md limit-chars">
+                <ul class="breadcrumb">
+                  <a href="/home">
+                    <i class="fa-solid fa-house" title="Home"></i>
+                  </a>
+                  <a href="/products">
+                    <i
+                      class="zmdi zmdi-assignment zmdi-hc-fw"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Products"
+                    ></i>
+                    <a href="/sales">
+                      <i class="fa-solid fa-scale-balanced" title="Sales"></i>
+                    </a>
+                  </a>
+                  <li class="breadcrumb">
+                    <a href="/dashboard">
+                        <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Dashboard"></i>
+                    </a>
+                </li>
+                  <a href="/logout">
+                    <i
+                      class="fa-solid fa-right-from-bracket"
+                      title="Logout"
+                    ></i>
+                  </a>
+                 
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main>
+        <div
+          id="myCarousel"
+          class="carousel slide mb-6"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="/static/images/desc2.1.jpg"
+                class="d-block w-100"
+                alt="Point of Sale System 1"
+              />
+              <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1>Boost Your Business with POS</h1>
+                    <p style="font-weight: 700;">Streamline your operations and increase sales.</p>
+                    <p>
+                  <p>
+                    <a
+                      class="btn btn-lg btn-primary"
+                      href="{{ url_for('dashboard') }}"
+                      >Get Started</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketing messaging and featurettes
+      ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+          <!-- Three columns of text below the carousel -->
+          <div class="row">
+            <div class="col-lg-4">
+              <img
+                src="{{url_for('static', filename='/images/c1.jpg')}}"
+                alt="Effortless Transactions"
+                style="width: 150px; height: 145px; border-radius: 75px"
+              />
+              <h2 class="fw-normal">Effortless Transactions</h2>
+              <p>Simplify your business operations with our POS system.</p>
+              <p>
+                <a class="btn btn-secondary" href="#">Learn More &raquo;</a>
+              </p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img
+                src="{{url_for('static', filename='/images/c3.webp')}}"
+                alt="Effortless Transactions"
+                style="width: 150px; height: 145px; border-radius: 75px"
+              />
+              <h2 class="fw-normal">Business Insights</h2>
+              <p>Get valuable data and insights for informed decisions.</p>
+              <p>
+                <a class="btn btn-secondary" href="#"
+                  >Discover Features &raquo;</a
+                >
+              </p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img
+                src="{{url_for('static', filename='/images/c2.jpg')}}"
+                alt="Effortless Transactions"
+                style="width: 150px; height: 145px; border-radius: 75px"
+              />
+              <h2 class="fw-normal">Customer Satisfaction</h2>
+              <p>Keep your customers happy with efficient service.</p>
+              <p>
+                <a class="btn btn-secondary" href="#">Get Started &raquo;</a>
+              </p>
+            </div>
+            <!-- /.col-lg-4 -->
+          </div>
+          <!-- /.row -->
+
+          <!-- START THE FEATURETTES -->
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading fw-normal lh-1">
+                Transform Your Business.
+                <span class="text-body-secondary"
+                  >Efficiency meets success.</span
+                >
+              </h2>
+              <p class="lead">
+                Elevate your business operations with our modern POS system.
+              </p>
+            </div>
+            <div class="col-md-5">
+              <img
+                src="{{url_for('static', filename='/images/desc1.jpg')}}"
+                class="d-block w-100"
+                alt="POS Feature 1"
+              />
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading fw-normal lh-1">
+                Data-Driven Decisions.
+                <span class="text-body-secondary"
+                  >Power at your fingertips.</span
+                >
+              </h2>
+              <p class="lead">
+                Leverage data analytics to drive your business forward.
+              </p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <img
+                src="{{url_for('static', filename='/images/desc2.1.jpg')}}"
+                class="d-block w-100"
+                alt="POS Feature 2"
+              />
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading fw-normal lh-1">
+                Happy Customers, Higher Sales.
+                <span class="text-body-secondary">The key to success.</span>
+              </h2>
+              <p class="lead">Satisfied customers lead to business growth.</p>
+            </div>
+            <div class="col-md-5">
+              <img
+                style="height: 250px"
+                src="{{url_for('static', filename='/images/happy-cus.jpg')}}"
+                class="d-block w-100"
+                alt="POS Feature 3"
+              />
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+
+          <!-- /END THE FEATURETTES -->
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='js/add-sale/common.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/add-sale/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/add-sale/order.js') }}"></script>
+</html>

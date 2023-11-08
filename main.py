@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session,jsonify,json
+ from flask import Flask, render_template, request, redirect, url_for, flash, session,jsonify,json
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_required, UserMixin, login_user, current_user, logout_user
 from sqlalchemy import DateTime, desc, func
@@ -7,7 +7,6 @@ from sqlalchemy.orm import relationship, sessionmaker
 
 
 app = Flask(__name__)
-
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
@@ -21,8 +20,6 @@ def load_user(id):
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:2345@localhost:5432/advanced-sale-system"
 db = SQLAlchemy(app)
 app.secret_key = b'eric'
-
-
 
 
 class Products(db.Model):
@@ -68,71 +65,6 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(255))
-
-
-
-
-@app.route('/insertOrder', methods=['POST'])
-def insert_order():
-    request_payload = request.get_json()  
-    customer_name = request_payload['customer_name']
-    total = request_payload['grand_total']
-    order_details = request_payload['order_details']
-
-    # Create a new order using SQLAlchemy
-    new_order = Orders(customer_name=customer_name, total=total)
-    db.session.add(new_order)
-    db.session.flush()  
-    new_order_id = new_order.order_id
-    # Create order details associated with the order
-    for detail in order_details:
-        product_id = detail['product_id']
-        quantity = detail['quantity']
-        total_price = detail['total_price']
-
-        new_order_detail = OrderDetails(order_id=new_order_id, product_id=product_id, quantity=quantity, total_price=total_price)
-        db.session.add(new_order_detail)
-
-    db.session.commit()
-    flash("Sale added succecfully")  
-
-    return jsonify({'order_id': new_order.order_id})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # index route
@@ -237,6 +169,31 @@ def add_sale():
     return render_template('add-sale.html')
 
 
+@app.route('/insertOrder', methods=['POST'])
+def insert_order():
+    request_payload = request.get_json()  
+    customer_name = request_payload['customer_name']
+    total = request_payload['grand_total']
+    order_details = request_payload['order_details']
+
+    # Create a new order using SQLAlchemy
+    new_order = Orders(customer_name=customer_name, total=total)
+    db.session.add(new_order)
+    db.session.flush()  
+    new_order_id = new_order.order_id
+    # Create order details associated with the order
+    for detail in order_details:
+        product_id = detail['product_id']
+        quantity = detail['quantity']
+        total_price = detail['total_price']
+
+        new_order_detail = OrderDetails(order_id=new_order_id, product_id=product_id, quantity=quantity, total_price=total_price)
+        db.session.add(new_order_detail)
+
+    db.session.commit()
+    flash("Sale added succecfully")  
+
+    return jsonify({'order_id': new_order.order_id})
 
 
 @app.route("/register", methods=["GET", "POST"])

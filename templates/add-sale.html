@@ -9,11 +9,6 @@
     <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
-     <!-- BOOTSTRAP styles -->
-   <!-- <link
-   rel="stylesheet"
-   href="{{ url_for('static', filename='/css/bootstrap.css') }}"
- /> -->
     <link
     rel="stylesheet" type="text/css"
     href="{{ url_for('static', filename='/css/add-sale/bootstrap.min.css') }}"
@@ -33,15 +28,16 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 />
-   <!-- BOOTSTRAP styles -->
-   <link
-   rel="stylesheet"
-   href="{{ url_for('static', filename='/css/bootstrap.css') }}"
- />
+ 
+
 </head>
 <body class="tooltips">
 <div class="container">
 
+
+
+
+  
     <div class="header content rows-content-header">
         <button class="button-menu-mobile show-sidebar">
             <i class="fa fa-bars"></i>
@@ -52,24 +48,41 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav visible-lg visible-md limit-chars">
                         <ul class="breadcrumb">
-                            <a href="/home">
-                                <i class="fa-solid fa-house" title="Home"></i>                   
-                            </a>
-                            <a href="/dashboard">
-                                <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Dashboard"></i>
-                            </a>
-                            <a href="/products">
-                                <i class="zmdi zmdi-assignment zmdi-hc-fw" data-toggle="tooltip" data-placement="bottom" title="Products"></i>
-                            </a>
+                          <a href="/home">
+                            <i class="fa-solid fa-house-user" title="Home"></i>
+                          </a>
+                          <a href="/products">
+                            <i class="fa-brands fa-product-hunt" 
+                            title="Products"
+                            style="margin-left: 10px; margin-right: 10px;"></i>
                             <a href="/sales">
-                                <i class="fa-solid fa-scale-balanced" title="Sales"></i>                    
+                              <i class="fa-solid fa-money-check-dollar"
+                              title="Sales"></i>
                             </a>
+                          </a>
+                            <a href="/dashboard">
+                              <i class="fa-solid fa-table-cells"
+                              title="Dashboard"
+                              style="margin-left: 10px; margin-right: 10px;"></i>
+                            </a>
+                          
+                          <a href="/logout">
+                            <i
+                              class="fa-solid fa-right-from-bracket"
+                              title="Logout"
+                            ></i>
+                          </a>
                         </ul>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
 
     <div class="right content-page">
         <div class="body content rows scroll-y">
@@ -109,7 +122,7 @@
                                     <span><b>Total</b></span>
                                 </div>
                                 <div class="col-sm-3">
-                                    <b><input id="product_grand_total" name="product_grand_total" class="product-grand-total" value="0.0"></input> Rs</b>
+                                    <b><input id="product_grand_total" name="product_grand_total" class="product-grand-total" value="0.0"></input> Ksh</b>
                                     <button class="btn btn-sm btn-primary pull-right" type="button" id="saveOrder">Save</button>
                                 </div>
                             </div>
@@ -131,7 +144,7 @@
                                 <input name="qty" type="number" min="1" placeholder="" class="form-control product-qty" value="1" style="max-width: 100px">
                             </div>
                             <div class="col-sm-3">
-                                <input id="item_total" name="item_total" class="product-total"></input><span> Rs</span>
+                                <input id="item_total" name="item_total" class="product-total"></input><span> Ksh</span>
                                 <button class="btn btn-sm btn-danger pull-right remove-row" type="button">Remove</button>
                             </div>
                         </div>
@@ -141,18 +154,6 @@
         </div>
     </div>
 </div>
-<!-- Flashes container -->
-<div id="flashes-container" class="flashes-container">
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <div class="alert alert-primary" role="alert">
-      <ul class="list-unstyled">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %} {% endwith %}
-  </div>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

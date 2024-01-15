@@ -1,4 +1,4 @@
- from flask import Flask, render_template, request, redirect, url_for, flash, session,jsonify,json
+from flask import Flask, render_template, request, redirect, url_for, flash, session,jsonify,json
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_required, UserMixin, login_user, current_user, logout_user
 from sqlalchemy import DateTime, desc, func
@@ -266,6 +266,10 @@ def dashboard():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
+
+
+# forget password
+@app.route("/forget-password")
 
 
 @app.route("/logout")
